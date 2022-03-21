@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface WeatherRepository extends JpaRepository<Weather, Integer> {
     List<Weather> findByBaseDateIs(String baseDate);
+
+    List<Weather> findByFcstDateEquals(Integer fcstDate);
 }

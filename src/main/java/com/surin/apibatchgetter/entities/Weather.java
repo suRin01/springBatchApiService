@@ -1,33 +1,42 @@
 package com.surin.apibatchgetter.entities;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "weathers")
 public class Weather {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "weather_idx", nullable = false)
+    @Column(name = "weathers_idx", nullable = false)
     private Integer id;
 
-    @Column(name = "baseDate", length = 8)
+    @Column(name = "base_date", length = 10)
     private String baseDate;
 
-    @Column(name = "baseTime", length = 4)
+    @Column(name = "base_time", length = 10)
     private String baseTime;
 
     @Column(name = "category", length = 4)
     private String category;
 
-    @Column(name = "nx", length = 4)
-    private String nx;
+    @Column(name = "fcst_date", length = 10)
+    private String fcstDate;
 
-    @Column(name = "xy", length = 4)
-    private String xy;
+    @Column(name = "fcst_time", length = 10)
+    private String fcstTime;
 
-    @Column(name = "obsrValue", length = 10)
-    private String obsrValue;
+    @Column(name = "fcst_value", length = 10)
+    private String fcstValue;
+
+    @Column(name = "nx")
+    private Integer nx;
+
+    @Column(name = "ny")
+    private Integer ny;
+
 }

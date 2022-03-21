@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Component
 public class SpotClient {
-    private static final String BASE_URL = "http://api.visitkorea.or.kr";
+    private static final String BASE_URL = "http://api.visitkorea.or.kr/";
 
     public static SpotApi getApiService(){
         return getInstance().create(SpotApi.class);
