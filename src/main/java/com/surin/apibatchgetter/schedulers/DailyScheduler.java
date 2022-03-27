@@ -34,7 +34,7 @@ public class DailyScheduler {
 //        }
 //    }
 
-    @Scheduled(fixedDelay = 5 * 1000L)
+    @Scheduled(cron = "0 0 7 * * *")
     public void executedJob2(){
         try{
             jobLauncher.run(
