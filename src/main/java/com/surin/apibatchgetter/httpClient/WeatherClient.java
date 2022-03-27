@@ -15,9 +15,6 @@ public class WeatherClient {
         return getInstance().create(WeatherApi.class);
     }
 
-
-
-
     public static Retrofit getInstance(){
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)

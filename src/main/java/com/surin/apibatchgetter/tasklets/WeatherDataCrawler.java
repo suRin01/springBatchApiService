@@ -1,5 +1,6 @@
 package com.surin.apibatchgetter.tasklets;
 
+import com.google.gson.JsonSyntaxException;
 import com.surin.apibatchgetter.DTO.WeatherResponse.WeatherResponseStructure;
 import com.surin.apibatchgetter.entities.LambertConicSpot;
 import com.surin.apibatchgetter.entities.Weather;
@@ -51,7 +52,7 @@ public class WeatherDataCrawler implements Tasklet {
                 1,
                 "JSON",
                 (new SimpleDateFormat("yyyyMMdd")).format(new Date()),
-//                "20220320",
+//                "20220321",
                 "0500",
                 Integer.parseInt(currentLambertConicSpot.get(0)),
                 Integer.parseInt(currentLambertConicSpot.get(1)));
@@ -74,6 +75,9 @@ public class WeatherDataCrawler implements Tasklet {
             log.info("Error occurred during executing request. do this step again in 30 minutes");
             Thread.sleep(1000 * 60 * 30);
             return RepeatStatus.CONTINUABLE;
+        }catch (JsonSyntaxException jsonSyntaxException){
+            log.error("Error occurred during executing request. daily limit expired");
+            return RepeatStatus.FINISHED;
         }
     }
 }
